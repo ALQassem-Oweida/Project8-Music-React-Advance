@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom";
 function About() {
   return (
     
@@ -10,9 +10,9 @@ function About() {
     <div className="row">
       <div className="col-lg-12">
         <div className="breadcrumb__links">
-          <a href="./Home.js">
+        <Link to="/">
             <i className="fa fa-home" /> Home
-          </a>
+          </Link>
           <span>About</span>
         </div>
       </div>

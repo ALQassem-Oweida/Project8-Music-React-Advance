@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import ReactDom from "react-dom";
 import Modal from "./Modal";
 
@@ -78,8 +78,40 @@ const portalHandel=()=>{
 
 <Modal onClose={() => setIsOpen(false)} value={value} open={isOpen}/>
 
+
+<div className="breadcrumb-option">
+
+  <div className="container">
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="breadcrumb__links">
+          <Link to="/">
+            <i className="fa fa-home" /> Home
+          </Link>
+          <span>Profile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div className="container mt-5">
-<h2 className='mb-4'>Your Profile</h2>
+  <div className="row">
+    <div className="col-lg-12">
+      <div className="section-title center-title">
+      
+        <h2>Profile</h2>
+        <h1>Info</h1>
+      
+        
+      </div>
+    </div>
+  </div>  </div>
+
+
+
+
+<div className="container mt-5">
+
   <div className="main-body">
     <div className="row">
       <div className="col-lg-8">
@@ -148,13 +180,13 @@ const portalHandel=()=>{
               <div className="row">
                 <div className="col-sm-3" />
                 <div className="col-sm-9 text-secondary">
-                  <button type="submit" className="btn btn-primary px-4" >Save Changes</button>
+                  <button type="submit" className="btn btn-dark px-4" >Save Changes</button>
                 </div>
               </div>
             </form>
           </div>
           
-          <button className='btn btn-info' onClick={portalHandel} >Favorite Songs</button>
+          
         </div>
         
       </div>
@@ -177,12 +209,19 @@ const portalHandel=()=>{
             <div className="row">
               <div className="col-lg-6">
                 <label>Registration Date : </label>
+              
               </div>
+              
               <div className="col-lg-6">
                 <p className="text-secondary mb-1">{userInfo.created_at}</p>
               </div>
               <br/><br/><br/>
-              
+              <div></div>
+              <div className="col d-flex justify-content-center align-items-center" >
+           
+
+              <button style={{color:'black'}} className='btn btn-outline-secondary' onClick={portalHandel} >Favorite Songs</button>
+              </div>
             </div>
           </div>
         </div>

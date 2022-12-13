@@ -20,29 +20,23 @@ function Songlisting({ song, key }) {
     const [inputs, setSongs] = useState([]);
     console.log(inputs);
 
-    useEffect(() => {
-        getUse();
-    }, []);
 
 
-    const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setSongs(values => ({ ...values, [name]: value,id:song.id }));
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setSongs(values => ({ ...values, [name]: value,id:song.id}));
+   
     }
 
     ///show data
 
-    function getUse() {
-        axios.get(`http://localhost/ApiReduxPro8/songs.php/${id}`).then(function (response) {
-            console.log(response.data);
-            setSongs(response.data);
-        });
-    
-    }
 
     const handleSubmit = (e) => {
-
+        console.log('test')
+        console.log(song.id);
+        console.log('test')
         e.preventDefault();
         axios.put(`http://localhost/ApiReduxPro8/songs.php`, inputs);
         
@@ -55,7 +49,7 @@ function Songlisting({ song, key }) {
     const deleteSong = (id) => {
         axios.delete(`http://localhost/ApiReduxPro8/songs.php/${id}/delete`).then(function (response) {
             console.log(response.data);
-            getUse();
+   
         });
         window.location.reload(false);
 
@@ -106,37 +100,33 @@ function Songlisting({ song, key }) {
                             
                             <Form.Group className="mb-3">
                                 <Form.Label>Song Name</Form.Label>
-                                <Form.Control type="text" name='song_name' onChange={handleChange} placeholder={song.song_name} />
+                                <Form.Control type="text" name='song_name' onChange={handleChange} placeholder={song.song_name}  required/>
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 <Form.Label>Singer</Form.Label>
-                                <Form.Control type="text" name='singer' onChange={handleChange} placeholder={song.singer} />
+                                <Form.Control type="text" name='singer' onChange={handleChange} placeholder={song.singer} required/>
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 {inputs.song_image}
                                 <Form.Label>Image Song</Form.Label>
-                                <Form.Control type="text" name='song_image' onChange={handleChange} placeholder="Enter Url Image Song" />
+                                <Form.Control type="text" name='song_image' onChange={handleChange} placeholder="Enter Url Image Song" required/>
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 {inputs.album}
                                 <Form.Label>Album	</Form.Label>
-                                <Form.Control type="text" name='album' onChange={handleChange} placeholder={song.album} />
+                                <Form.Control type="text" name='album' onChange={handleChange} placeholder={song.album} required/>
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 {inputs.genre}
                                 <Form.Label>Genre	</Form.Label>
-                                <Form.Control type="text" name='genre' onChange={handleChange} placeholder={song.genre} />
+                                <Form.Control type="text" name='genre' onChange={handleChange} placeholder={song.genre} required/>
                             </Form.Group>
                             <Form.Group className="mb-3" >
                                 {inputs.lyrics}
                                 <Form.Label>Lyrics</Form.Label>
-                                    <Form.Control as="textarea" name='lyrics' onChange={handleChange} placeholder={song.lyrics} />
+                                    <Form.Control as="textarea" name='lyrics' onChange={handleChange} placeholder={song.lyrics} required/>
                             </Form.Group>
-                            <Form.Group className="mb-3" >
-                                {inputs.description}
-                                <Form.Label>Description Song</Form.Label>
-                                <Form.Control as="textarea" name='description' onChange={handleChange} placeholder={song.description} />
-                            </Form.Group>
+                           
                             <Button variant="primary" type="submit">
                                 Update
                             </Button>

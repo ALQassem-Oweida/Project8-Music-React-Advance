@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSongs } from "../redux/actions/productsActions";
 import ProductComponent from "./ProductComponent";
@@ -30,7 +31,7 @@ const Songs = () => {
   console.log("Songs :", songs);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [songsPerPage] = useState(16);
+  const [songsPerPage] = useState(9);
 
   // Get current blogs
   const indexOfLastsong = currentPage * songsPerPage;
@@ -57,9 +58,9 @@ const Songs = () => {
     <div className="row">
       <div className="col-lg-12">
         <div className="breadcrumb__links">
-          <a href="./Home.js">
+        <Link to="/">
             <i className="fa fa-home" /> Home
-          </a>
+          </Link>
           <span>Songs</span>
         </div>
       </div>

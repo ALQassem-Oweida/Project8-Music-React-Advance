@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectedProduct,setPosts} from "../redux/actions/productsActions";
@@ -98,9 +98,9 @@ const [comments,setComment]=useState([]);
     <div className="row">
       <div className="col-lg-12">
         <div className="breadcrumb__links">
-          <a href="./Home.js">
+        <Link to="/">
             <i className="fa fa-home" /> Home
-          </a>
+          </Link>
           <span>{song_name} Song</span>
         </div>
       </div>
@@ -179,7 +179,7 @@ const [comments,setComment]=useState([]);
             
             <div>
               {sessionStorage.getItem('id')==comment.user_id ?<>
-              <a type="submit" style={{border:"none",color:'red',fontSize:'12px'}} onClick={() => handleDel(comment.id)} >
+              <a  type="submit" style={{border:"none",color:'red',fontSize:'12px'}} onClick={() => handleDel(comment.id)} >
              delete 
               </a><span style={{marginRight:'10px',marginLeft:'10px'}}>|</span>
 

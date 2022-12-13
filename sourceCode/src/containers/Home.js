@@ -16,8 +16,8 @@ function Home() {
         <div className="hero__text">
           <span>New single</span>
           <h1>Feel the heart beats</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br />tempor
-            incididunt ut labore et dolore magna aliqua.</p>
+          <p>Music Is Food For The Soul And The Brain
+Jamming to your favorite song not only lifts your spirits, but it also helps <br></br> uniquely exercise the brain.</p>
           <a href="https://www.youtube.com/watch?v=K4DyBUG242c" className="play-btn video-popup"><i className="fa fa-play" /></a>
         </div>
       </div>
@@ -84,28 +84,29 @@ function Home() {
             <div className="service__item deep-bg">
               <img src="img/services/service-1.png" alt />
               <h4>Wedding</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+              <p>Your wedding day will include plenty of events, from exchanging vows to entering your reception and enjoying your first dance. </p>
             </div>
           </div>
           <div className="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
             <div className="service__item">
               <img src="img/services/service-2.png" alt />
               <h4>Clubs and bar</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+              <p>With a customer-first focus and a complete entertainment platform from a single supplier; there’s only one choice.</p>
             </div>
           </div>
           <div className="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
             <div className="service__item deep-bg">
               <img src="img/services/service-4.png" alt />
               <h4>DJ lessons</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+              <p>DJ Rainflow knows how to move your mind, body and soul by delivering tracks that stand out
+            from the norm.</p>
             </div>
           </div>
           <div className="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
             <div className="service__item">
               <img src="img/services/service-3.png" alt />
               <h4>Corporate events</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+              <p>Whether it's a summer corporate event, finding the right live entertainment for your event.</p>
             </div>
           </div>
         </div>

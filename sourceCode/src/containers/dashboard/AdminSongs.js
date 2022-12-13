@@ -51,6 +51,7 @@ const AdminSongs = () => {
             });
         setShow(false);
         getUse();
+        window.location.reload(false);
 
     };
 
@@ -192,15 +193,7 @@ const AdminSongs = () => {
                                     placeholder="Enter Lyrics Song here" />
                             </FloatingLabel>
                         </Form.Group>
-                        <Form.Group className="mb-3" >
-                            <Form.Label>Description Song</Form.Label>
-                            <FloatingLabel controlId="floatingTextarea" className="mb-3" >
-                                <Form.Control as="textarea" name='description'
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Leave a Description Song here" />
-                            </FloatingLabel>
-                        </Form.Group>
+                       
                         <Button variant="primary" type="submit">
                             Submit
                         </Button>
