@@ -176,7 +176,7 @@ const [fav,setFav]=useState([]);
           <tr>
             
             <td><img src={song.song_image} alt className="avatar-sm rounded-circle me-2" /><a href="#" className="text-body">{song.song_name}</a></td>
-            <td><span className="badge badge-soft mb-0">{song.singer}</span></td>
+            <td><span style={{color:'black'}} className="badge badge-soft mb-0">{song.singer}</span></td>
  
      
             <td>

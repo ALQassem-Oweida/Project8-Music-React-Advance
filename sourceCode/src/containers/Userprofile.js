@@ -48,8 +48,9 @@ const [bg,setbg]=useState('');
         axios.put(`http://localhost/ApiReduxPro8/reg.php/${id}`, userInfo).then(function(response){
             navigate('/Userprofile');
             setMassage('User Data Update Succsesfuly')
+            getUser();
         });
-        getUser();
+        
         setbg('#4dae3c91')
     }
 

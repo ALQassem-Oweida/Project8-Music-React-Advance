@@ -109,7 +109,7 @@ const AdminPosts = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name User </th>
+                                        <th scope="col">User Name </th>
                                         <th scope="col">Song Name  </th>
                                         <th scope="col">Post Content</th>
                                         <th scope="col">Post Approval</th>

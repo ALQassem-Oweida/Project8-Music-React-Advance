@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./containers/Header";
+import Header2 from "./containers/Header2";
 import Login from "./containers/Login";
 import Home from "./containers/Home";
 import Footer from "./containers/Footer";
@@ -25,8 +26,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-
-        <Header />
+      <Header2 />
+        {/* <Header /> */}
         <Routes>
         <Route path="/login"  element={<Login/>} />
         <Route path="/"  element={<Home/>} />

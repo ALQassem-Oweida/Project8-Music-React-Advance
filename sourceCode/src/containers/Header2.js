@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
-const Header = () => {
+const Header2 = () => {
 
   let navigate=useNavigate();
   
@@ -11,29 +11,26 @@ const Header = () => {
     navigate('/')
   }
 
-
-
   return (
-
-<>
-
-
-
-
-
-{/* Header Section Begin */}
-<header className="header">
-  <div className="container">
+   <>
+   <header className="header">
+   <div className="container">
     <div className="row">
-      <div className="col-lg-2 col-md-2">
-        <div className="header__logo">
+
+<nav className="navbar navbar-expand-lg navbar-light ">
+<div className="col-lg-2 col-md-2 ">
+<div className="header__logo">
           <Link to="/"><img src="img/logo1.png" alt /></Link>
         </div>
-      </div>
-      
-      <div className="col-lg-10 col-md-10">
-        <div className="header__nav">
-          <nav className="header__menu mobile-menu">
+        </div>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon" />
+  </button>
+  <div className="collapse navbar-collapse  flex-column align-items-center text-center" id="navbarTogglerDemo02">
+
+  <div className="col-lg-10 col-md-10">
+
+  <nav className="header__menu mobile-menu">
             <ul >
               <li className="active"><Link to='/'>Home</Link></li>
 
@@ -72,19 +69,26 @@ const Header = () => {
             </ul>
           </nav>
        
-        </div>
-      </div>
-    </div>
-    <div id="mobile-menu-wrap" />
+
+       </div>
+
+
+
+
+ 
   </div>
+</nav>
+
+
+
+   
+   
+</div>
+</div>
 </header>
-{/* Header Section End */}
+   
+   </>
+  )
+}
 
-
-
-</>
-
-);
-};
-
-export default Header;
+export default Header2
