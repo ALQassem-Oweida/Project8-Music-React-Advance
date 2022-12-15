@@ -1,11 +1,36 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ProductComponent = (props) => {
 
+   const [Fav,setFav]=useState([]);
 
 
+
+   const fetchFav = async () => {
+    const response = await axios
+      .get(`http://localhost/ApiReduxPro8/favorite.php/${sessionStorage.getItem('id')}`)
+      .catch((err) => {
+        console.log("Err: ", err);
+      });
+      setFav(response.data);
+      console.log(response.data)
+  };
+
+
+  
+  // const filterdFav=Fav.filter((el) => {return el.id==id})
+  console.log("filterdFav")
+  // console.log(filterdFav)
+  console.log(Fav.filter((el) => {return el.song_name=='Send Me An Angel'}).length)
+
+  
+useEffect(() => {
+fetchFav();
+
+
+}, []);
 
   
   const addToFav=(song_id,user_id)=>{
@@ -15,12 +40,20 @@ const ProductComponent = (props) => {
     // setInputs((values) => ({song_id:song_id,user_id:user_id}));
     axios.post('http://localhost/ApiReduxPro8/favorite.php',{song_id:song_id,user_id:user_id})
     .then((res) => {
-      console.log(res);
+      fetchFav(); 
     })
-
-    alert('The song has been add to the favorite list successful');  
-    
+   
   }
+
+  const handleDel = (favid) => {
+   
+    axios
+      .delete(`http://localhost/ApiReduxPro8/favorite2.php/${favid}/delete`)
+      .then(function (response) {
+        fetchFav(); 
+      });
+     
+  };
  
   if (props.search == "") {
 
@@ -29,6 +62,8 @@ const ProductComponent = (props) => {
     const renderList = props.currentBlogs.map((song) => {
       const { id, song_name,singer,album,genre, song_image, lyrics,description } = song;
 
+   
+
       return (
      
  
@@ -36,7 +71,20 @@ const ProductComponent = (props) => {
   
 
 <div className="card" style={{ width: "18rem",margin:"40px" }}>
-<Link  to={`/${id}`}><img className="card-img-top" src={song_image} alt={song_name} /></Link>
+<div>
+{sessionStorage.getItem("username")!== null?
+
+
+<>
+{Fav.filter((el) => {return el.song_name==song_name}).length==0?
+       <a className="LikeButton" type="submit"  onClick={()=>addToFav(id,sessionStorage.getItem('id'))}><i style={{color:"white",fill:'white'}} className="bi bi-heart-fill fa-lg"></i></a>
+     : <a className="LikeButton" type="submit"  onClick={()=>handleDel(id)}><i style={{color:"red",fill:'white'}} className="bi bi-heart-fill fa-lg"></i></a> }
+  </>          
+            
+            :null} 
+<Link  to={`/song/${id}`}>
+
+  <img className="card-img-top" src={song_image} alt={song_name} /></Link></div>
   <div className="card-body">
   <div class="row">
     <div class="col text-center">
@@ -44,14 +92,7 @@ const ProductComponent = (props) => {
     </div>
   </div>
     
-    <div class="row">
-    <div class="col text-center">
-    <button type="submit" class="btn btn-dark" onClick={()=>addToFav(id,sessionStorage.getItem('id'))}>Add to favourite</button>
-    </div>
-  </div>
-   
-   
-    
+
   </div>
 </div>
                 
@@ -88,7 +129,8 @@ const ProductComponent = (props) => {
             
             <div class="row">
             <div class="col text-center">
-            <button type="submit" class="btn btn-dark" onClick={()=>addToFav(id,sessionStorage.getItem('id'))}>Add to favourite</button>
+            {sessionStorage.getItem("username")!== null?
+            <button type="submit" class="btn btn-dark" onClick={()=>addToFav(id,sessionStorage.getItem('id'))}><i class="bi bi-heart"></i></button>:null}
             </div>
           </div>
            
@@ -96,7 +138,7 @@ const ProductComponent = (props) => {
             
           </div>
         </div>
-                        </Link>
+        </Link>
  
 
       );

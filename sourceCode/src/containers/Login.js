@@ -56,7 +56,7 @@ const Login = () => {
                     sessionStorage.setItem('role', result.data[0].role);
 
 
-                    navigate('/');
+                    navigate('/adminsongs');
 
  
                 } else {

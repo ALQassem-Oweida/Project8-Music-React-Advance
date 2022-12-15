@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSongs } from "../redux/actions/productsActions";
 import ProductComponent from "./ProductComponent";
 import Pagination from "./Pagination";
-import Page404 from "./Page404";
+
 import Search from "./Search";
 
 
@@ -46,11 +46,11 @@ const Songs = () => {
 
   return (
 <>
-{sessionStorage.getItem("username")!== null?
 
 
 
-<section className="discography spad">
+
+<section  className="discography spad">
 
 <div className="breadcrumb-option">
 
@@ -86,7 +86,6 @@ const Songs = () => {
   {/* <div classname="col-4"> */}
 
   <ProductComponent
-  
           currentBlogs={currentBlogs}
           all={songs}
           search={search}
@@ -110,9 +109,7 @@ const Songs = () => {
                 </div>
 
 </section>
-:
 
-    <Page404/>}
 
 
 

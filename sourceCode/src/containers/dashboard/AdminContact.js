@@ -1,67 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import Pagination from "../Pagination";
-import { useParams } from "react-router-dom";
-
 import Table from 'react-bootstrap/Table';
-import UserEdit from './UserEdit';
+import Pagination from "../Pagination";
 
-const AdminUsers = ({ user }) => {
-    const { id } = useParams();
+const AdminContact = () => {
 
-    // popup add
-    const [show, setShow] = useState(false);
-
-    const handleClose1 = () => setShow(false);
-
-    // popup edit
-
-    const [show1, setShow1] = useState(false);
-    const handleClose = () => setShow1(false);
-
-
-
-    const [users, setUsers] = useState([]);
+    
+    const [contacts, setContacts] = useState([]);
     useEffect(() => {
-        // getUsers();
         getUse();
     }, []);
+
 
 
     ///show data
 
     function getUse() {
-        axios.get(`http://localhost/ApiReduxPro8/reg.php`).then(function (response) {
+        axios.get(`http://localhost/ApiReduxPro8/contact.php`).then(function (response) {
             console.log(response.data);
-            setUsers(response.data);
+            setContacts(response.data);
         });
     }
 
-    /////delete
 
-    const deleteUser = (id) => {
-        axios.delete(`http://localhost/ApiReduxPro8/reg.php/${id}/delete`).then(function (response) {
-            console.log(response.data);
-            getUse();
-        });
 
-    }
+  //For Pagination :
 
- //For Pagination :
+  const [currentPage, setCurrentPage] = useState(1);
+  const [contactsPerPage] = useState(6);
+  // Get current blogs
+  const indexOfLastcontact = currentPage * contactsPerPage;
+  const indexOfFirstcontacts = indexOfLastcontact - contactsPerPage;
+  const currentContacts = contacts.slice(indexOfFirstcontacts, indexOfLastcontact);
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
- const [currentPage, setCurrentPage] = useState(1);
- const [usersPerPage] = useState(6);
- // Get current blogs
- const indexOfLastuser = currentPage * usersPerPage;
- const indexOfFirstuser = indexOfLastuser - usersPerPage;
- const currentusers = users.slice(indexOfFirstuser, indexOfLastuser);
- // Change page
- const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+   
+
 
     return (
         <>
             <br /><br /><br /><br /><br />
-
             {/* Breadcrumb Begin */}
             <div className="breadcrumb-option">
                 <div className="container">
@@ -70,12 +50,13 @@ const AdminUsers = ({ user }) => {
                             <div className="breadcrumb__links">
                                 <a href="#"><i className="fa fa-home" /> Home</a>
                                 <span>Admin Dashboard</span>
-                                <span> &nbsp;&nbsp;|&nbsp;&nbsp;Users</span>
+                                <span> &nbsp;&nbsp;|&nbsp;&nbsp;Contact</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* Breadcrumb End */}
 
 
             {/* Breadcrumb End */}
@@ -84,7 +65,7 @@ const AdminUsers = ({ user }) => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="section-title center-title">
-                                <h2>Admin Dashboard Users</h2>
+                                <h2>Admin Dashboard Contacts</h2>
                                 <h1>Dashboard</h1>
                             </div>
                         </div>
@@ -97,7 +78,8 @@ const AdminUsers = ({ user }) => {
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col col-md-10"><b><h3>Users</h3></b></div>
+                            <div class="col col-md-10"><b><h3>Contacts</h3></b></div>
+
                         </div>
                     </div>
 
@@ -109,25 +91,33 @@ const AdminUsers = ({ user }) => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Image  </th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Role</th>
-                                        <th scope="col">Password</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Name </th>
+                                        <th scope="col">Email </th>
+                                        <th scope="col">Number Phone</th>
+                                        <th scope="col">Contact Message</th>
+                                        <th scope="col">Date</th>
                                     </tr>
                                 </thead>
-                                <tbody> {currentusers.map((currentusers, key) =>
+                                <tbody>{currentContacts.map((contact, key) =>
 
-                                    <UserEdit user={currentusers} key={key} />
+
+                                    <tr key={key}>
+
+                                        <th scope="row">{contact.id}</th>
+                                        <td>{contact.name}</td>
+                                        <td>{contact.email}</td>
+                                        <td>{contact.phone}</td>
+                                        <td>{contact.message}</td>
+                                        <td>{contact.created_at}</td>
+
+
+                                    </tr>
                                 )}
                                 </tbody>
+
                             </Table>
                         </div>
                     </div>
-
-                    
 
                     <div class="card-header">
             <div class="row">
@@ -137,8 +127,8 @@ const AdminUsers = ({ user }) => {
 
     
                   <Pagination
-                    songsPerPage={usersPerPage}
-                    totalSongs={users.length}
+                    songsPerPage={contactsPerPage}
+                    totalSongs={contacts.length}
                     paginate={paginate}
                   />
 
@@ -154,14 +144,12 @@ const AdminUsers = ({ user }) => {
                 </div>
             </div>
 
+            </>
 
 
 
 
+  )
+}
 
-
-        </>
-    )
-};
-
-export default AdminUsers
+export default AdminContact 

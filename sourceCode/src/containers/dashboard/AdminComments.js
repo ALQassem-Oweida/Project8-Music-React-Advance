@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
+import Pagination from "../Pagination";
 import Table from 'react-bootstrap/Table';
 
 const AdminComment = () => {
 
-  const [inputs, setInput] = useState([]);
+
   const [comments, setComments] = useState([]);
   useEffect(() => {
     getUse();
@@ -29,9 +29,24 @@ const AdminComment = () => {
       getUse();
     });
     getUse();
-
-
   }
+
+  //For Pagination :
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [commentsPerPage] = useState(6);
+  // Get current blogs
+  const indexOfLastcomment = currentPage * commentsPerPage;
+  const indexOfFirstcomments = indexOfLastcomment - commentsPerPage;
+  const currentComments = comments.slice(indexOfFirstcomments, indexOfLastcomment);
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
+
+
+
+
   return (
     <>
       <br /><br /><br /><br /><br />
@@ -90,7 +105,7 @@ const AdminComment = () => {
                     <th >Action</th>
                   </tr>
                 </thead>
-                <tbody>{comments.map((comment, key) =>
+                <tbody>{currentComments.map((comment, key) =>
 
 
                   <tr key={key}>
@@ -117,6 +132,40 @@ const AdminComment = () => {
               </Table>
             </div>
           </div>
+
+          <div  className="card-body mt-2">
+            {/* Billing history table*/}
+
+       
+          </div>
+
+          <div class="card-header">
+            <div class="row">
+              <div class="col col-md-4"></div>
+              <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                <div class="pagination__links">
+
+    
+                  <Pagination
+                    songsPerPage={commentsPerPage}
+                    totalSongs={comments.length}
+                    paginate={paginate}
+                  />
+
+                </div>
+              </div>
+              <div class="col-lg-4"></div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
         </div>
       </div>
 

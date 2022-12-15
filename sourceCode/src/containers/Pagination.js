@@ -9,10 +9,6 @@ const Pagination = ({ songsPerPage, totalSongs, paginate }) => {
     pageNumbers.push(i);
   }
 
- 
- 
- 
-
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">
@@ -23,7 +19,7 @@ const Pagination = ({ songsPerPage, totalSongs, paginate }) => {
         </li>
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href="#" className="page-link">
+            <a onClick={() => paginate(number)} href="?#main" className="page-link">
               {number}
             </a>
           </li>

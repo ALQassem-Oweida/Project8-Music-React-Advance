@@ -4,6 +4,8 @@ import axios from "axios";
 import "./App.css";
 import "./fav.css";
 
+
+
 export default function Modal({ open,value,onClose}) {
 
 
@@ -41,6 +43,19 @@ const [fav,setFav]=useState([]);
   };
 
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [songsPerPage] = useState(4);
+
+  // Get current blogs
+  const indexOfLastsong = currentPage * songsPerPage;
+  const indexOfFirstSongs = indexOfLastsong - songsPerPage;
+  const currentFavSongs = fav.slice(indexOfFirstSongs, indexOfLastsong);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+
+
 
 
 
@@ -50,7 +65,11 @@ const [fav,setFav]=useState([]);
 
 
 
+  const pageNumbers = [];
 
+  
+  for (let i = 1; i <= Math.ceil(fav.length / songsPerPage); i++) {
+    pageNumbers.push(i);}
 
 
 
@@ -63,11 +82,11 @@ const [fav,setFav]=useState([]);
 
   return ReactDom.createPortal(
     <>
+   
       <div className="overlay" />
       <div className="model" style={{ top: value.top, left: value.left }}>
       
-        
-
+   
 
 
 <div>
@@ -75,23 +94,55 @@ const [fav,setFav]=useState([]);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossOrigin="anonymous" />
   <div className="container">
    
-  <div class="row align-items-center">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <h5 class="card-title">Favorite Song List <span class="text-muted fw-normal ms-2">(8)</span></h5>
+  <div className="row align-items-center">
+        <div className="col-md-4">
+            <div className="mb-3">
+                <h5 className="card-title">Favorite Song List <span className="text-muted fw-normal ms-2"></span></h5>
             </div>
         </div>
+
+        <div className="col-md-4" >
+        <div className="d-flex flex-wrap align-items-center justify-content-center gap-2 mb-3">
+        <nav aria-label="Page navigation example">
+      <ul className="pagination">
+        <li className="page-item">
+          <a className="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {pageNumbers.map((number) => (
+          <li key={number} className="page-item">
+            <a onClick={() => paginate(number)} href="#" className="page-link">
+              {number}
+            </a>
+          </li>
+        ))}
+        
+
+        <li className="page-item">
+          <a className="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    </div>
+
+        </div>
   
-        <div class="col-md-6">
-            <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+        <div className="col-md-4">
+            <div className="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                 <div>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
+                    <ul className="nav nav-pills">
+                        <li className="nav-item">
                         <button className="btn btn-danger" onClick={onClose}>Close</button>
                         </li>
+                   
                      
                     </ul>
                 </div>
+              
               
                 
             </div>
@@ -102,22 +153,10 @@ const [fav,setFav]=useState([]);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   
 
 <div className="row">
+
 <div className="col-lg-12">
   <div className>
     <div className="table-responsive">
@@ -133,11 +172,11 @@ const [fav,setFav]=useState([]);
         </thead>
         <tbody>
 
-        {fav.map((song)=>
+        {currentFavSongs.map((song)=>
           <tr>
             
             <td><img src={song.song_image} alt className="avatar-sm rounded-circle me-2" /><a href="#" className="text-body">{song.song_name}</a></td>
-            <td><span className="badge badge-soft-success mb-0">{song.singer}</span></td>
+            <td><span className="badge badge-soft mb-0">{song.singer}</span></td>
  
      
             <td>
@@ -152,8 +191,15 @@ const [fav,setFav]=useState([]);
             </td>
           </tr>
          )}
+         
         </tbody>
       </table>
+
+
+
+     
+
+
     </div>
   </div>
 </div>

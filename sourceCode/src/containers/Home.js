@@ -14,7 +14,7 @@ function Home() {
     <div className="row">
       <div className="col-lg-12">
         <div className="hero__text">
-          <span>New single</span>
+         
           <h1>Feel the heart beats</h1>
           <p>Music Is Food For The Soul And The Brain
 Jamming to your favorite song not only lifts your spirits, but it also helps <br></br> uniquely exercise the brain.</p>
@@ -53,13 +53,13 @@ Jamming to your favorite song not only lifts your spirits, but it also helps <br
       <div className="col-lg-6">
         <div className="about__text">
           <div className="section-title">
-            <h2>DJ Alexandra Rud</h2>
-            <h1>About me</h1>
+            <h2>Noisy Notes</h2>
+            <h1>About</h1>
           </div>
-          <p>DJ Rainflow knows how to move your mind, body and soul by delivering tracks that stand out
-            from the norm. As if this impressive succession of high impact, floor-filling bombs wasn’t
-            enough to sustain.</p>
-          <Link to='/contact' className="primary-btn">CONTACT ME</Link>
+          <p>      It's a place where all searches end!
+
+We have a large, legal, every day growing universe of lyrics where stars of all genres and ages shine.</p>
+          <Link to='/contact' className="primary-btn">CONTACT US</Link>
         </div>
       </div>
     </div>
@@ -83,30 +83,29 @@ Jamming to your favorite song not only lifts your spirits, but it also helps <br
           <div className="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
             <div className="service__item deep-bg">
               <img src="img/services/service-1.png" alt />
-              <h4>Wedding</h4>
-              <p>Your wedding day will include plenty of events, from exchanging vows to entering your reception and enjoying your first dance. </p>
+              <h4>Mirrors by Justin Timberlake</h4>
+              <p>"And I can't help but stare, cause I see truth somewhere in your eyes." </p>
             </div>
           </div>
           <div className="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
             <div className="service__item">
               <img src="img/services/service-2.png" alt />
-              <h4>Clubs and bar</h4>
-              <p>With a customer-first focus and a complete entertainment platform from a single supplier; there’s only one choice.</p>
+              <h4>Light Up by Drake</h4>
+              <p> "Let's celebrate with a toast and get lost in tonight."</p>
             </div>
           </div>
           <div className="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
             <div className="service__item deep-bg">
               <img src="img/services/service-4.png" alt />
-              <h4>DJ lessons</h4>
-              <p>DJ Rainflow knows how to move your mind, body and soul by delivering tracks that stand out
-            from the norm.</p>
+              <h4>Jadakiss</h4>
+              <p>"Put Your Hands Up"</p>
             </div>
           </div>
           <div className="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
             <div className="service__item">
               <img src="img/services/service-3.png" alt />
-              <h4>Corporate events</h4>
-              <p>Whether it's a summer corporate event, finding the right live entertainment for your event.</p>
+              <h4>That's Amore by Dean Martin</h4>
+              <p>"When the moon hits your eye like a big pizza pie, that's amore"</p>
             </div>
           </div>
         </div>

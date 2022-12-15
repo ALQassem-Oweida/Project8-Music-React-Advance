@@ -44,7 +44,7 @@ const Tests = () => {
 
 
              
-              {sessionStorage.getItem("username")!== null?<><li><Link className="navbar-brand" to='/profile'> <li><a href="#">Hello, {sessionStorage.getItem('username')}</a>
+              {sessionStorage.getItem("username")!== null?<><li><li><a href="#" className="navbar-brand">Hello, {sessionStorage.getItem('username')}</a>
                                             <ul className="dropdown" >
                                 
                                                 <li><Link to="/userprofile">PROFILE</Link></li>
@@ -52,13 +52,14 @@ const Tests = () => {
                                                 
                                                 <li  onClick={logout}><Link style={{ color: "#be9efd"}} to="home">  LOGOUT</Link></li>
                                             </ul>
-                                        </li></Link></li>
+                                        </li></li>
         {sessionStorage.getItem('role')==="admin"?<li><a href="#">Dashboard</a>
                                                 <ul className="dropdown">
                                                     <li><Link to="adminsongs">SONGS</Link></li>
                                                     <li><Link to="adminusers">USERS</Link></li>
                                                     <li><Link to="adminoposts">POSTS</Link></li>
                                                     <li><Link to="admincomments">COMMENTS</Link></li>
+                                                    <li><Link to="/admincontact">CONTACT</Link></li>
                                                 </ul>
                                             </li>
                                            

@@ -8,6 +8,7 @@ import {
 import AddBlog from "./AddBlog";
 import Comment from "./Comment";
 import CommentEdit from "./CommentEdit";
+import YouTube from 'react-youtube';
 
 
 
@@ -18,7 +19,7 @@ function Singlesong() {
 
   const { songId } = useParams();
   let product = useSelector((state) => state.product);
-  const { id, song_name,singer,album,genre, song_image, lyrics,description } = product;
+  const { id, song_name,singer,album,genre, song_image, lyrics,description,youtube } = product;
 
   let posts = useSelector((state) => state.posts);
   
@@ -126,10 +127,22 @@ const [comments,setComment]=useState([]);
     <div className="col-md-6">
       
       <div className="post-content bg-white border border-white">
-
-
+      
+    
         <img src={song_image} alt="post-image" className="img-responsive post-image" />
+
+        <div className="section-title center-title mt-5">
+      
+        <h2>Watch on youtube</h2>
+     
+      
         
+      
+       
+        
+      </div>
+        
+        <YouTube videoId={youtube}/>
         
        
          <div className="container mt-5">
@@ -138,8 +151,8 @@ const [comments,setComment]=useState([]);
       <div className="section-title center-title">
       
         <h2>Posts</h2>
-     
-       <h5>Share your opinion and write your post</h5>
+        {sessionStorage.getItem("username")!== null?
+       <h5>Share your opinion and write your post</h5>: <h5><span style={{color:"red"}}> Log in </span> to Share your opinion and write your post</h5>}
         
       
        
@@ -179,7 +192,7 @@ const [comments,setComment]=useState([]);
             
             <div>
               {sessionStorage.getItem('id')==comment.user_id ?<>
-              <a  type="submit" style={{border:"none",color:'red',fontSize:'12px'}} onClick={() => handleDel(comment.id)} >
+              <a type="submit" style={{border:"none",color:'red',fontSize:'12px'}} onClick={() => handleDel(comment.id)} >
              delete 
               </a><span style={{marginRight:'10px',marginLeft:'10px'}}>|</span>
 
@@ -197,7 +210,7 @@ const [comments,setComment]=useState([]);
          
             )}
 
-                      {edit==false?<Comment post_id={post.id} user_id={sessionStorage.getItem('id')}/>:null}
+                      {edit==false &&  sessionStorage.getItem("username")!== null?<Comment post_id={post.id} user_id={sessionStorage.getItem('id')}/>:null}
                       {edit==true? <CommentEdit id={editedId}/>:null}
                      
                       
@@ -208,8 +221,8 @@ const [comments,setComment]=useState([]);
          </>)}
          
       </div>
-      
-      <AddBlog songId={songId} user_id={sessionStorage.getItem('id')} />
+      {sessionStorage.getItem("username")!== null?
+      <AddBlog songId={songId} user_id={sessionStorage.getItem('id')} />:null}
     </div>
 
 

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Table from 'react-bootstrap/Table';
+import Pagination from "../Pagination";
 
 const AdminPosts = () => {
 
 
-    const [inputs, setInput] = useState([]);
+    
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         getUse();
@@ -43,8 +41,20 @@ const AdminPosts = () => {
             getUse();
         });
         getUse();
-        alert(message); 
+        // alert(message); 
     }
+
+    //For Pagination :
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(6);
+  // Get current blogs
+  const indexOfLastpost = currentPage * postsPerPage;
+  const indexOfFirstposts = indexOfLastpost - postsPerPage;
+  const currentComments = posts.slice(indexOfFirstposts, indexOfLastpost);
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
 
     return (
@@ -102,11 +112,12 @@ const AdminPosts = () => {
                                         <th scope="col">Name User </th>
                                         <th scope="col">Song Name  </th>
                                         <th scope="col">Post Content</th>
+                                        <th scope="col">Post Approval</th>
 
                                         <th >Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>{posts.map((post, key) =>
+                                <tbody>{currentComments.map((post, key) =>
 
 
                                     <tr key={key}>
@@ -115,6 +126,7 @@ const AdminPosts = () => {
                                         <td>{post.name}</td>
                                         <td>{post.song_name}</td>
                                         <td>{post.post_content}</td>
+                                        <td>{post.approval == 1 ? <span style={{color:'green'}}>Approved</span> : <span style={{color:'red'}}>Not Approved</span>}</td>
                                         <td scope="col-2">
                                             <Button type='submit' onClick={()=>setApproval(post.id,1,'Post Approved successfully')} variant="success" className='mx-2' >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
@@ -147,6 +159,31 @@ const AdminPosts = () => {
                             </Table>
                         </div>
                     </div>
+                    <div class="card-header">
+            <div class="row">
+              <div class="col col-md-4"></div>
+              <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                <div class="pagination__links">
+
+    
+                  <Pagination
+                    songsPerPage={postsPerPage}
+                    totalSongs={posts.length}
+                    paginate={paginate}
+                  />
+
+                </div>
+              </div>
+              <div class="col-lg-4"></div>
+            </div>
+          </div>
+
+
+
+
+
+
+
                 </div>
             </div>
 

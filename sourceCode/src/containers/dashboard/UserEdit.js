@@ -37,7 +37,7 @@ function UserEdit({ user, key }) {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setInput(values => ({ ...values, [name]: value }));
+        setInput(values => ({ ...values, [name]: value,id:user.id }));
     }
 
     const handleSubmit = (e) => {
@@ -52,10 +52,13 @@ function UserEdit({ user, key }) {
     const deleteUser = (id) => {
         axios.delete(`http://localhost/ApiReduxPro8/reg.php/${id}/delete`).then(function (response) {
             console.log(response.data);
-            window.location.reload(false);
+           
         });
-
+        window.location.reload(false);
     }
+
+
+
 
     return (
         <>
@@ -125,6 +128,7 @@ function UserEdit({ user, key }) {
                     </Modal.Body>
                 </Modal>
             </tr>
+            
         </>
     )
 }
