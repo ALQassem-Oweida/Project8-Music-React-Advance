@@ -36,7 +36,7 @@ const Header2 = () => {
 
               <li><Link to="songs">Songs</Link></li>
               <li><Link to="about">About</Link></li>
-              <li><Link to="contact">Contact</Link></li>
+              <li><Link to="contact">Contact Us</Link></li>
               {sessionStorage.getItem("username")==null? <li><Link to="regester">Register</Link></li>:null}
 
 

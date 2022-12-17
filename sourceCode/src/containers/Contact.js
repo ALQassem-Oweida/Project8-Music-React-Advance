@@ -109,7 +109,7 @@ class Contact extends React.Component {
                   </Form.Group>
 
                   <Form.Group className='mb-3'>
-                    <Form.Control type="text" name='phone'  placeholder="Enter your number phone " value={this.state.phone} onChange={this.handleChange}/>
+                    <Form.Control type="text" name='phone'  placeholder="Enter your phone number" value={this.state.phone} onChange={this.handleChange}/>
                     {/* <p className="errors">{formErrors.email}</p> */}
 
                   </Form.Group>

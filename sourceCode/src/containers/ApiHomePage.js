@@ -76,7 +76,7 @@ function ApiHomePage() {
         <div classname="col-lg-12">
           <div classname="section-title">
             <center>
-              <h2 className="mb-5">Upcoming Events</h2>
+              <h2 className="mb-5">Best Hits</h2>
             </center>
           </div>
         </div>

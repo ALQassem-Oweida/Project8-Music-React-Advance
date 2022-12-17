@@ -18,7 +18,7 @@ function Home() {
           <h1>Feel the heart beats</h1>
           <p>Music Is Food For The Soul And The Brain
 Jamming to your favorite song not only lifts your spirits, but it also helps <br></br> uniquely exercise the brain.</p>
-          <a href="https://www.youtube.com/watch?v=K4DyBUG242c" className="play-btn video-popup"><i className="fa fa-play" /></a>
+          <a href="https://www.youtube.com/watch?v=K4DyBUG242c" className="play-btn video-popup" target="_blank"><i className="fa fa-play" /></a>
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@ We have a large, legal, every day growing universe of lyrics where stars of all 
     <div className="row">
       <div className="col-lg-6 p-0">
         <div className="services__left set-bg" style={{backgroundImage:"url(img/services/service-left.jpg)"}}>
-          <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" className="play-btn video-popup"><i className="fa fa-play" /></a>
+          <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" className="play-btn video-popup" target="_blank"><i className="fa fa-play" /></a>
         </div>
       </div>
       <div className="col-lg-6 p-0">
